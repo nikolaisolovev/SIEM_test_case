@@ -1,0 +1,12 @@
+# Настройка мониторинга файла /var/log/apache.log
+$ModLoad imfile # Загрузка модуля для мониторинга файлов
+
+$InputFileName /var/log/apache.log
+$InputFileTag apache
+$InputFileStateFile state-apache
+$InputFileSeverity info
+$InputFileFacility local0
+$InputRunFileMonitor
+
+# Настройка отправки событий на сервер 10.10.10.10
+local0.* @10.10.10.10

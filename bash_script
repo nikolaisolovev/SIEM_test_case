@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Переходим в директорию /etc
+cd /etc
+
+# Создаем папку для архивов, если она не существует
+mkdir -p /etc/bkp
+
+# Находим и архивируем каталоги, начинающиеся с "cron*"
+for dir in cron*; do
+  if [ -d "$dir" ]; then
+    tar -czvf "/etc/bkp/$dir.tar.gz" "$dir"
+  fi
+done
+
+# Выводим список архивов
+ls -l /etc/bkp
